@@ -11,6 +11,7 @@ import { User } from './Models/User';
       </app-auth-form>
       <app-auth-form (submitted)="loginUser($event)">
         <h3>Login</h3>
+        <app-auth-remember (checked)="rememberUser($event)"></app-auth-remember>
         <button  type="submit">Login</button>
       </app-auth-form>
     </div>
@@ -26,5 +27,9 @@ export class AppComponent {
 
   loginUser(user: User) {
     console.log("Login User:", user);
+  }
+
+  rememberUser(event: boolean) {
+    console.log("remember User:", event);
   }
 }

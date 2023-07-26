@@ -9,6 +9,7 @@
             Password
             <input type="password" name="password" [(ngModel)]="formData.Password">
         </label>
-        <button type="submit">Submit</button>
+        <ng-content select="app-auth-remember"></ng-content>
+        <ng-content select="button"></ng-content>
     </form>
 </div>
