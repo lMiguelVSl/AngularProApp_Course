@@ -23,6 +23,9 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   constructor(private cd: ChangeDetectorRef) { }
 
   ngAfterViewInit(): void {
+    this.email.nativeElement.setAttribute('placeholder', 'Enter your email');
+    this.email.nativeElement.classList.add('email');
+    this.email.nativeElement.focus();
     if (this.message) this.message.forEach(item => item.days = 30);
     this.cd.detectChanges();
   }
