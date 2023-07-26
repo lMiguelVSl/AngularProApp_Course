@@ -1,0 +1,14 @@
+<div>
+    <form (ngSubmit)="onSubmit()">
+        <ng-content></ng-content>
+        <label>
+            Email Address
+            <input type="email" name="email" [(ngModel)]="formData.Email">
+        </label>
+        <label>
+            Password
+            <input type="password" name="password" [(ngModel)]="formData.Password">
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+</div>
