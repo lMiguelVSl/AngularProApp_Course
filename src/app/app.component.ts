@@ -17,6 +17,7 @@ import { AuthFormComponent } from './Components/auth-form/auth-form.component';
       </app-auth-form>
       <h1>Dynamic component</h1>
       <button (click)="onDestroyComponent()">Destroy component</button>
+      <button (click)="onMoveComponent()">Move component</button>
       <div #entry></div>
     </div>
   `,
@@ -49,5 +50,9 @@ export class AppComponent implements AfterViewInit {
 
   onDestroyComponent() {
     this.component.destroy();
+  }
+
+  onMoveComponent() {
+    this.entry.move(this.component.hostView, 0);
   }
 }
