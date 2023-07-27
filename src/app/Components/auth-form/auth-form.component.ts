@@ -14,6 +14,7 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   @ViewChildren(AuthMessageComponent) message!: QueryList<AuthMessageComponent>;
   @ViewChild('email') email!: ElementRef;
 
+  title: string = 'Test title';
   showMessage: boolean = false;
   formData: User = {
     Email: '',
@@ -23,7 +24,7 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   constructor(private cd: ChangeDetectorRef, private renderer: Renderer2) { }
 
   ngAfterViewInit(): void {
-    this.renderer.setAttribute(this.email, 'placeholder', 'test place holder');
+    this.renderer.setAttribute(this.email.nativeElement, 'placeholder', 'test place holder');
     // this.email.nativeElement.setAttribute('placeholder', 'Enter your email');
     // this.email.nativeElement.classList.add('email');
     // this.email.nativeElement.focus();

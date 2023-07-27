@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ComponentRef, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { User } from './Models/User';
+import { AuthFormComponent } from './Components/auth-form/auth-form.component';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +15,25 @@ import { User } from './Models/User';
         <app-auth-remember (checked)="rememberUser($event)"></app-auth-remember>
         <button  type="submit">Login</button>
       </app-auth-form>
+      <h1>Dynamic component</h1>
+      <button (click)="onDestroyComponent()">Destroy component</button>
+      <div #entry></div>
     </div>
   `,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+  @ViewChild('entry', { read: ViewContainerRef}) entry!: ViewContainerRef;
+  component!: ComponentRef<AuthFormComponent>;
   title = 'AngularProApp';
+
+  constructor() { }
+
+  ngAfterViewInit(): void {
+    this.component = this.entry.createComponent(AuthFormComponent);
+    this.component.instance.title = 'Create Account';
+    this.component.instance.submitted.subscribe(this.loginUser);
+  }
 
   createUser(user: User) {
     console.log("Create User:", user);
@@ -31,5 +45,9 @@ export class AppComponent {
 
   rememberUser(event: boolean) {
     console.log("remember User:", event);
+  }
+
+  onDestroyComponent() {
+    this.component.destroy();
   }
 }
