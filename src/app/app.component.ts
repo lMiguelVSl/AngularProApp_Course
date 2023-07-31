@@ -47,6 +47,14 @@ interface File {
           <p>{{file.size}} </p>
         </div>
       </div>
+      <hr>
+      <hr>
+      <div>
+        <h1>Reactive Forms Angular</h1>
+        <div>
+          <app-stock-inventory></app-stock-inventory>
+        </div>
+      </div>
     </div>
   `,
   styleUrls: ['./app.component.css']

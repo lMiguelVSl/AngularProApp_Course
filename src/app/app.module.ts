@@ -8,6 +8,7 @@ import { AuthRememberComponent } from './Components/auth-remember/auth-remember.
 import { AuthMessageComponent } from './Components/auth-message/auth-message.component';
 import { CreditCardDirective } from './Directives/credit-card.directive';
 import { FileSizePipe } from './Pipes/filesize.pipe';
+import { StockInventoryModule } from './stock-inventory/stock-inventory.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FileSizePipe } from './Pipes/filesize.pipe';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    StockInventoryModule
   ],
   providers: [
     FileSizePipe
