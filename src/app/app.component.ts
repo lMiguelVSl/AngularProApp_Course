@@ -1,6 +1,12 @@
-import { AfterViewInit, Component, ComponentRef, Input, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ComponentRef, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { User } from './Models/User';
 import { AuthFormComponent } from './Components/auth-form/auth-form.component';
+
+interface File {
+  name: string,
+  size: number,
+  type: string
+}
 
 @Component({
   selector: 'app-root',
@@ -27,11 +33,24 @@ import { AuthFormComponent } from './Components/auth-form/auth-form.component';
           {{foo}} : {{location}}
         </ng-template>
       </div>
+      <hr>
+      <div>
+        <label for="creditCard">Credit Card: </label>
+        <input type="text" placeholder="Credit Card" name="creditCard" credit-card>
+      </div>
+      <hr>
+      <div>
+        Custom Pipes
+        <div *ngFor="let file of files">
+          <p>{{file.name}}</p>
+          <p>{{file.size | filesize }} </p>
+        </div>
+      </div>
     </div>
   `,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('entry', { read: ViewContainerRef }) entry!: ViewContainerRef;
   @ViewChild('entry2', { read: ViewContainerRef }) entry2!: ViewContainerRef;
   @ViewChild('tmp') tmpl!: TemplateRef<any>
@@ -39,11 +58,19 @@ export class AppComponent implements AfterViewInit {
   component!: ComponentRef<AuthFormComponent>;
   title = 'AngularProApp';
 
+  files: File[] = [];
+
   constructor() { }
+
+  ngOnInit(): void {
+    this.files = [
+      {name: 'First file', size: 2120109, type: 'image/svg'}
+    ]
+  }
 
   ngAfterViewInit(): void {
     this.component = this.entry.createComponent(AuthFormComponent);
-    this.component.instance.title = 'Create Account';
+    //this.component.instance.title = 'Create Account';
     this.component.instance.submitted.subscribe(this.loginUser);
     this.entry2.createEmbeddedView(this.tmpl, {
       $implicit: 'Miguel Vargas',

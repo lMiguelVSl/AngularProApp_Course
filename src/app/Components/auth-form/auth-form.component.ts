@@ -9,17 +9,18 @@ import { AuthMessageComponent } from '../auth-message/auth-message.component';
   styleUrls: ['./auth-form.component.css']
 })
 export class AuthFormComponent implements AfterContentInit, AfterViewInit {
-  @Output() submitted: EventEmitter<User> = new EventEmitter();
-  @ContentChildren(AuthRememberComponent) remember!: QueryList<AuthRememberComponent>;
-  @ViewChildren(AuthMessageComponent) message!: QueryList<AuthMessageComponent>;
-  @ViewChild('email') email!: ElementRef;
-
   title: string = 'Test title';
   showMessage: boolean = false;
   formData: User = {
     Email: '',
     Password: ''
   }
+  
+  @Output() submitted: EventEmitter<User> = new EventEmitter();
+  @ContentChildren(AuthRememberComponent) remember!: QueryList<AuthRememberComponent>;
+  @ViewChildren(AuthMessageComponent) message!: QueryList<AuthMessageComponent>;
+  @ViewChild('email') email!: ElementRef;
+
 
   constructor(private cd: ChangeDetectorRef, private renderer: Renderer2) { }
 
