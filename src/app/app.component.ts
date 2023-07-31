@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ComponentRef, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { User } from './Models/User';
 import { AuthFormComponent } from './Components/auth-form/auth-form.component';
+import { FileSizePipe } from './Pipes/filesize.pipe';
 
 interface File {
   name: string,
-  size: number,
+  size: string,
   type: string
 }
 
@@ -41,9 +42,9 @@ interface File {
       <hr>
       <div>
         Custom Pipes
-        <div *ngFor="let file of files">
+        <div *ngFor="let file of mapped">
           <p>{{file.name}}</p>
-          <p>{{file.size | filesize }} </p>
+          <p>{{file.size}} </p>
         </div>
       </div>
     </div>
@@ -59,13 +60,21 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'AngularProApp';
 
   files: File[] = [];
+  mapped: File[] = [];
 
-  constructor() { }
+  constructor(private fileSizePipe: FileSizePipe) { }
 
   ngOnInit(): void {
     this.files = [
-      {name: 'First file', size: 2120109, type: 'image/svg'}
+      {name: 'First file', size: '2120109', type: 'image/svg'}
     ]
+    this.mapped = this.files.map(item => {
+      return {
+        name: item.name,
+        type: item.type,
+        size: this.fileSizePipe.transform(item.size, 'mb')
+      }
+    });
   }
 
   ngAfterViewInit(): void {

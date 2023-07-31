@@ -22,7 +22,9 @@ import { FileSizePipe } from './Pipes/filesize.pipe';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    FileSizePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
