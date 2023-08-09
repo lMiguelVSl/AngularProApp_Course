@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
+import { Product } from "./models/product.interface";
 
 @Component({
     selector: 'app-stock-inventory',
@@ -18,6 +19,10 @@ export class StockInventoryComponent {
         }),
         stock: new FormArray([])
     })
+
+    products: Product[] = [
+        { id: 1, price: 23, name: 'First stock' }
+    ];
 
     onSubmit() {
         console.log('FORM', this.form.value);
