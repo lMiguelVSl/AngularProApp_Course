@@ -10,7 +10,7 @@ export class StockProductsComponent {
   @Input() parent!: FormGroup; 
 
   get stocks() {
-    return (this.parent.get('stocks') as FormArray).controls;
+    return (this.parent.get('stock') as FormArray).controls;
   }
 
 }

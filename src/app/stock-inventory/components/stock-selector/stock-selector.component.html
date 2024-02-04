@@ -1,5 +1,5 @@
 <div [formGroup]="parent">
-    <div formControlName="selector">
+    <div formGroupName="selector">
         <select formControlName="product_id">
             <option value="">Select stock</option>
             <option *ngFor="let product of products" [value]="product.id">
