@@ -8,6 +8,12 @@ import { Product } from "./models/product.interface";
     styleUrls: ['stock-inventory.component.scss']
 })
 export class StockInventoryComponent {
+
+    products: Product[] = [
+        { id: 1, price: 23, name: 'First stock' },
+        { id: 2, price: 33, name: 'Second stock' },
+    ];
+    
     form = new FormGroup({
         store: new FormGroup({
             branch: new FormControl(''),
@@ -20,11 +26,9 @@ export class StockInventoryComponent {
         stock: new FormArray([])
     })
 
-    products: Product[] = [
-        { id: 1, price: 23, name: 'First stock' }
-    ];
-
     onSubmit() {
+
         console.log('FORM', this.form.value);
+        console.log('FORM VALID', this.form.invalid);
     }
 }
