@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, ViewChildren, ViewChild, AfterViewInit, ContentChildren, QueryList, AfterContentInit, ChangeDetectorRef, ElementRef, Renderer2 } from '@angular/core';
-import { User } from 'src/app/Models/User';
+import { User } from 'src/app/models/User';
 import { AuthRememberComponent } from '../auth-remember/auth-remember.component';
 import { AuthMessageComponent } from '../auth-message/auth-message.component';
 

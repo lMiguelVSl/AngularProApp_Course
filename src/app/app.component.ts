@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ComponentRef, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { User } from './Models/User';
-import { AuthFormComponent } from './Components/auth-form/auth-form.component';
-import { FileSizePipe } from './Pipes/filesize.pipe';
+import { AfterViewInit, Component, ComponentRef, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { User } from './models/User';
+import { AuthFormComponent } from './components/auth-form/auth-form.component';
+import { FileSizePipe } from './pipes/filesize.pipe';
 
 interface File {
   name: string,
@@ -13,7 +13,7 @@ interface File {
   selector: 'app-root',
   template: `
     <div>
-      <app-auth-form (submitted)="createUser($event)">
+      <!-- <app-auth-form (submitted)="createUser($event)">
         <h3>Create Account</h3>
         <button type="submit">Join Us</button>
       </app-auth-form>
@@ -48,7 +48,7 @@ interface File {
         </div>
       </div>
       <hr>
-      <hr>
+      <hr> -->
       <div>
         <h1>Reactive Forms Angular</h1>
         <div>
