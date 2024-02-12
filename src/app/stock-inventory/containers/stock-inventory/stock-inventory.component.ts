@@ -10,10 +10,7 @@ import { Stock } from './models/stock.interface';
 })
 export class StockInventoryComponent {
 
-    products: Product[] = [
-        { id: 1, price: 23, name: 'First stock' },
-        { id: 2, price: 33, name: 'Second stock' },
-    ];
+    products!: Product[];
     
     form = new FormGroup({
         store: new FormGroup({
@@ -24,10 +21,7 @@ export class StockInventoryComponent {
             product_id: new FormControl(''),
             quantity: new FormControl(10)
         }),
-        stock: new FormArray([
-            this.createStock({product_id: '10',quantity:  1}),
-            this.createStock({product_id: '20', quantity: 2})
-        ])
+        stock: new FormArray([])
     })
 
     onSubmit() {
