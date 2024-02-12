@@ -25,8 +25,8 @@ export class StockInventoryComponent {
             quantity: new FormControl(10)
         }),
         stock: new FormArray([
-            this.createStock(new Stock('10', 1)),
-            this.createStock(new Stock('20', 2))
+            this.createStock({product_id: '10',quantity:  1}),
+            this.createStock({product_id: '20', quantity: 2})
         ])
     })
 
